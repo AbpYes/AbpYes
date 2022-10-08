@@ -5,4 +5,9 @@
         <RootNamespace>AbpYes.BaseServer</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\AbpYes.BaseServer.Application.Contracts\AbpYes.BaseServer.Application.Contracts.csproj" />
+      <ProjectReference Include="..\AbpYes.BaseServer.EntityFrameworkCore\AbpYes.BaseServer.EntityFrameworkCore.csproj" />
+    </ItemGroup>
+
 </Project>

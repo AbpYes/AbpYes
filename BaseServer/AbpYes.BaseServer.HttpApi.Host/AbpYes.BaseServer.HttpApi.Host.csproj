@@ -7,7 +7,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AbpYes.BaseServer.Application\AbpYes.BaseServer.Application.csproj" />
+      <ProjectReference Include="..\AbpYes.BaseServer.EntityFrameworkCore\AbpYes.BaseServer.EntityFrameworkCore.csproj" />
+      <ProjectReference Include="..\AbpYes.BaseServer.HttpApi\AbpYes.BaseServer.HttpApi.csproj" />
     </ItemGroup>
 
 </Project>

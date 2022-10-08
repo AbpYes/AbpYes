@@ -5,4 +5,8 @@
         <RootNamespace>AbpYes.BaseServer</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\AbpYes.BaseServer.Domain\AbpYes.BaseServer.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
