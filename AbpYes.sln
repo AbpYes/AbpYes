@@ -1,0 +1,77 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbpYes.BaseServer.HttpApi.Host", "BaseServer\AbpYes.BaseServer.HttpApi.Host\AbpYes.BaseServer.HttpApi.Host.csproj", "{F6724DEA-C5B4-4405-842C-3B0729999479}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BaseServer", "BaseServer", "{451D7856-8501-4C2E-8AF3-B4D40CDFBD32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbpYes.BaseServer.HttpApi", "BaseServer\AbpYes.BaseServer.HttpApi\AbpYes.BaseServer.HttpApi.csproj", "{FF02731D-045C-40F3-B11E-A1EE7EDD66B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbpYes.BaseServer.Application", "BaseServer\AbpYes.BaseServer.Application\AbpYes.BaseServer.Application.csproj", "{649272C6-A769-40A1-B085-3326EA9D0B04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbpYes.BaseServer.Application.Contracts", "BaseServer\AbpYes.BaseServer.Application.Contracts\AbpYes.BaseServer.Application.Contracts.csproj", "{81C0EA06-955F-45E7-8258-4467FC193B5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbpYes.BaseServer.Domain", "BaseServer\AbpYes.BaseServer.Domain\AbpYes.BaseServer.Domain.csproj", "{4356D5EF-9306-42AB-B70E-18442FF67EF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbpYes.BaseServer.Domain.Shared", "BaseServer\AbpYes.BaseServer.Domain.Shared\AbpYes.BaseServer.Domain.Shared.csproj", "{01D5409F-CB78-47B2-88EC-3D64C6CE080D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbpYes.BaseServer.EntityFrameworkCore", "BaseServer\AbpYes.BaseServer.EntityFrameworkCore\AbpYes.BaseServer.EntityFrameworkCore.csproj", "{DC84577D-916E-4E05-B1F4-3596B345F1B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbpYes.BaseServer.HttpApi.Client", "BaseServer\AbpYes.BaseServer.HttpApi.Client\AbpYes.BaseServer.HttpApi.Client.csproj", "{E2932288-5096-44BD-9F85-A0070D01B446}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbpYes.BaseServer.DbMigrator", "BaseServer\AbpYes.BaseServer.DbMigrator\AbpYes.BaseServer.DbMigrator.csproj", "{66C9107A-F027-45BA-9B9D-09389DC486E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6724DEA-C5B4-4405-842C-3B0729999479}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6724DEA-C5B4-4405-842C-3B0729999479}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6724DEA-C5B4-4405-842C-3B0729999479}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6724DEA-C5B4-4405-842C-3B0729999479}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF02731D-045C-40F3-B11E-A1EE7EDD66B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF02731D-045C-40F3-B11E-A1EE7EDD66B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF02731D-045C-40F3-B11E-A1EE7EDD66B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF02731D-045C-40F3-B11E-A1EE7EDD66B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{649272C6-A769-40A1-B085-3326EA9D0B04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{649272C6-A769-40A1-B085-3326EA9D0B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{649272C6-A769-40A1-B085-3326EA9D0B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{649272C6-A769-40A1-B085-3326EA9D0B04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81C0EA06-955F-45E7-8258-4467FC193B5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81C0EA06-955F-45E7-8258-4467FC193B5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81C0EA06-955F-45E7-8258-4467FC193B5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81C0EA06-955F-45E7-8258-4467FC193B5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4356D5EF-9306-42AB-B70E-18442FF67EF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4356D5EF-9306-42AB-B70E-18442FF67EF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4356D5EF-9306-42AB-B70E-18442FF67EF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4356D5EF-9306-42AB-B70E-18442FF67EF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01D5409F-CB78-47B2-88EC-3D64C6CE080D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01D5409F-CB78-47B2-88EC-3D64C6CE080D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01D5409F-CB78-47B2-88EC-3D64C6CE080D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01D5409F-CB78-47B2-88EC-3D64C6CE080D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC84577D-916E-4E05-B1F4-3596B345F1B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC84577D-916E-4E05-B1F4-3596B345F1B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC84577D-916E-4E05-B1F4-3596B345F1B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC84577D-916E-4E05-B1F4-3596B345F1B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2932288-5096-44BD-9F85-A0070D01B446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2932288-5096-44BD-9F85-A0070D01B446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2932288-5096-44BD-9F85-A0070D01B446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2932288-5096-44BD-9F85-A0070D01B446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66C9107A-F027-45BA-9B9D-09389DC486E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66C9107A-F027-45BA-9B9D-09389DC486E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66C9107A-F027-45BA-9B9D-09389DC486E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66C9107A-F027-45BA-9B9D-09389DC486E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F6724DEA-C5B4-4405-842C-3B0729999479} = {451D7856-8501-4C2E-8AF3-B4D40CDFBD32}
+		{FF02731D-045C-40F3-B11E-A1EE7EDD66B5} = {451D7856-8501-4C2E-8AF3-B4D40CDFBD32}
+		{649272C6-A769-40A1-B085-3326EA9D0B04} = {451D7856-8501-4C2E-8AF3-B4D40CDFBD32}
+		{81C0EA06-955F-45E7-8258-4467FC193B5F} = {451D7856-8501-4C2E-8AF3-B4D40CDFBD32}
+		{4356D5EF-9306-42AB-B70E-18442FF67EF7} = {451D7856-8501-4C2E-8AF3-B4D40CDFBD32}
+		{01D5409F-CB78-47B2-88EC-3D64C6CE080D} = {451D7856-8501-4C2E-8AF3-B4D40CDFBD32}
+		{DC84577D-916E-4E05-B1F4-3596B345F1B6} = {451D7856-8501-4C2E-8AF3-B4D40CDFBD32}
+		{E2932288-5096-44BD-9F85-A0070D01B446} = {451D7856-8501-4C2E-8AF3-B4D40CDFBD32}
+		{66C9107A-F027-45BA-9B9D-09389DC486E1} = {451D7856-8501-4C2E-8AF3-B4D40CDFBD32}
+	EndGlobalSection
+EndGlobal
