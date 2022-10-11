@@ -1,29 +1,40 @@
+using AbpYes.BaseServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
+using Serilog.Events;
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+    .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
+    .Enrich.FromLogContext()
+    .WriteTo.Async(c => c.File("Logs/logs.txt"))
+    .WriteTo.Async(c => c.Console())
+    .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+var configuration = builder.Configuration;
+try
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    Log.Information($"开始启动{configuration["App:Name"]}服务...");
+
+    builder.Host.AddAppSettingsSecretsJson()
+        .UseAutofac()
+        .UseSerilog();
+
+    await builder.AddApplicationAsync<AbpYesBaseServerHttpApiHostModule>();
+    var app = builder.Build();
+    await app.InitializeApplicationAsync();
+    await app.RunAsync();
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
+catch
+{
+    Log.Fatal($"启动{configuration["App:Name"]}服务失败!");
+    throw;
+}
+finally
+{
+    Log.CloseAndFlush();
+}
