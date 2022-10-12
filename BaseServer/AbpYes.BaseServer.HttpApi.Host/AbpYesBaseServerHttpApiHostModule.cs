@@ -20,7 +20,10 @@ namespace AbpYes.BaseServer;
     typeof(AbpAspNetCoreMvcModule),
     typeof(AbpMultiTenancyModule),
     typeof(AbpAspNetCoreSerilogModule),
-    typeof(AbpSwashbuckleModule)
+    typeof(AbpSwashbuckleModule),
+    typeof(AbpYesBaseServerApplicationModule),
+    typeof(AbpYesBaseServerEntityFrameworkCoreModule),
+    typeof(AbpYesBaseServerHttpApiModule)
 )]
 public class AbpYesBaseServerHttpApiHostModule : AbpModule
 {

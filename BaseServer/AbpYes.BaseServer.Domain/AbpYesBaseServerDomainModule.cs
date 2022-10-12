@@ -1,5 +1,13 @@
-﻿namespace AbpYes.BaseServer;
+﻿using Volo.Abp.Identity;
+using Volo.Abp.Modularity;
+using Volo.Abp.OpenIddict;
 
-public class AbpYesBaseServerDomainModule
+namespace AbpYes.BaseServer;
+
+[DependsOn(
+    typeof(AbpIdentityDomainModule),
+    typeof(AbpOpenIddictDomainModule)
+)]
+public class AbpYesBaseServerDomainModule : AbpModule
 {
 }

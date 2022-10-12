@@ -1,12 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>netstandard2.0</TargetFramework>
         <RootNamespace>AbpYes.BaseServer</RootNamespace>
+        <LangVersion>10</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\AbpYes.BaseServer.Domain.Shared\AbpYes.BaseServer.Domain.Shared.csproj" />
+        <ProjectReference Include="..\AbpYes.BaseServer.Domain.Shared\AbpYes.BaseServer.Domain.Shared.csproj"/>
     </ItemGroup>
 
 </Project>

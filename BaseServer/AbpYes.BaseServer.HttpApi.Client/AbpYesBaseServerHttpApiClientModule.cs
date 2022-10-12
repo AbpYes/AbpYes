@@ -1,5 +1,9 @@
-﻿namespace AbpYes.BaseServer;
+﻿using Volo.Abp.Http.Client;
+using Volo.Abp.Modularity;
 
-public class AbpYesBaseServerHttpApiClientModule
+namespace AbpYes.BaseServer;
+
+[DependsOn(typeof(AbpHttpClientModule))]
+public class AbpYesBaseServerHttpApiClientModule : AbpModule
 {
 }
