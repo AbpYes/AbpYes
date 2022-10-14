@@ -3,7 +3,10 @@ using Volo.Abp.Modularity;
 
 namespace AbpYes.BaseServer;
 
-[DependsOn(typeof(AbpHttpClientModule))]
+[DependsOn(
+    typeof(AbpHttpClientModule),
+    typeof(AbpYesBaseServerApplicationContractsModule)
+)]
 public class AbpYesBaseServerHttpApiClientModule : AbpModule
 {
 }

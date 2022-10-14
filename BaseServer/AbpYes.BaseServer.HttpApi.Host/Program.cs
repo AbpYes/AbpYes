@@ -16,6 +16,7 @@ Log.Logger = new LoggerConfiguration()
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
+
 try
 {
     Log.Information($"开始启动{configuration["App:Name"]}服务...");
