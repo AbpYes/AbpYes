@@ -20,6 +20,12 @@ namespace AbpYes.BaseServer.EntityFrameworkCore;
  */
 public class AbpYesMigrationsModelDiffer : MigrationsModelDiffer
 {
+    /// <summary>
+    /// 是否生成外键
+    /// </summary>
+    public const bool IsGenerateForeignKey = false;
+
+
     public AbpYesMigrationsModelDiffer(
         [NotNull] IRelationalTypeMappingSource typeMappingSource,
         [NotNull] IMigrationsAnnotationProvider migrationsAnnotations, [NotNull] IChangeDetector changeDetector,
@@ -33,13 +39,17 @@ public class AbpYesMigrationsModelDiffer : MigrationsModelDiffer
 
     public override IReadOnlyList<MigrationOperation> GetDifferences(IRelationalModel source, IRelationalModel target)
     {
-        var operations = base.GetDifferences(source, target).ToList();
-
-        foreach (var operation in operations.OfType<CreateTableOperation>())
+        if (!IsGenerateForeignKey)
         {
-            operation.ForeignKeys?.Clear();
+            var operations = base.GetDifferences(source, target);
+            foreach (var operation in operations.OfType<CreateTableOperation>())
+            {
+                operation.ForeignKeys?.Clear();
+            }
+
+            return operations;
         }
 
-        return operations;
+        return base.GetDifferences(source, target);
     }
 }

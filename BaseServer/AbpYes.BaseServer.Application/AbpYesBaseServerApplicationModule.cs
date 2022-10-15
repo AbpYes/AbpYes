@@ -1,5 +1,7 @@
-﻿namespace AbpYes.BaseServer;
+﻿using Volo.Abp.Modularity;
 
-public class AbpYesBaseServerApplicationModule
+namespace AbpYes.BaseServer;
+
+public class AbpYesBaseServerApplicationModule : AbpModule
 {
 }

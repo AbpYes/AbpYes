@@ -1,13 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <RootNamespace>AbpYes.BaseServer</RootNamespace>
         <LangVersion>10</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\AbpYes.BaseServer.Application.Contracts\AbpYes.BaseServer.Application.Contracts.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="6.0.0"/>
     </ItemGroup>
 
 </Project>

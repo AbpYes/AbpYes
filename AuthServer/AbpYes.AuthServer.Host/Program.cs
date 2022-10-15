@@ -1,4 +1,4 @@
-using AbpYes.AuthServer.Host;
+using AbpYes.AuthServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

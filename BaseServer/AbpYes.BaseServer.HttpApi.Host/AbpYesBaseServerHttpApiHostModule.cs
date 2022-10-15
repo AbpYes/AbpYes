@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
+using AbpYes.BaseServer.MultiTenancy;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
@@ -30,10 +30,11 @@ public class AbpYesBaseServerHttpApiHostModule : AbpModule
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         var services = context.Services;
+        var configuration = context.Services.GetConfiguration();
 
         services.AddControllers();
         services.AddEndpointsApiExplorer();
-        services.AddSwaggerGen(options => { options.SwaggerDoc("v1", new OpenApiInfo()); });
+        services.AddSwaggerGen(options => { options.SwaggerDoc(configuration["App:Name"], new OpenApiInfo()); });
 
         ConfigureCors(context);
     }
@@ -69,12 +70,7 @@ public class AbpYesBaseServerHttpApiHostModule : AbpModule
     public override void OnApplicationInitialization(ApplicationInitializationContext context)
     {
         var app = context.GetApplicationBuilder();
-        var env = context.GetEnvironment();
         var configuration = context.GetConfiguration();
-
-        if (env.IsDevelopment())
-        {
-        }
 
         app.UseCorrelationId();
         app.UseStaticFiles();
@@ -83,6 +79,12 @@ public class AbpYesBaseServerHttpApiHostModule : AbpModule
         app.UseRouting();
         app.UseCors();
         app.UseAuthentication();
+
+        if (MultiTenancyConsts.IsEnabled)
+        {
+            app.UseMultiTenancy();
+        }
+
         app.UseUnitOfWork();
         app.UseAuthorization();
         app.UseAuditing();

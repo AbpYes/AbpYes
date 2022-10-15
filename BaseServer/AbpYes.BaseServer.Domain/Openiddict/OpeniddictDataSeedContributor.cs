@@ -52,6 +52,9 @@ public class OpeniddictDataSeedContributor : IDataSeedContributor, ITransientDep
     }
 
 
+    /// <summary>
+    /// 创建资源范围
+    /// </summary>
     private async Task CreateScopesAsync()
     {
         if (await _scopeManager.FindByNameAsync("AbpYes") == null)
@@ -69,6 +72,9 @@ public class OpeniddictDataSeedContributor : IDataSeedContributor, ITransientDep
     }
 
 
+    /// <summary>
+    /// 创建应用程序
+    /// </summary>
     private async Task CreateApplicationsAsync()
     {
         var commonScopes = new List<string>
@@ -83,7 +89,7 @@ public class OpeniddictDataSeedContributor : IDataSeedContributor, ITransientDep
 
         var configurationSection = _configuration.GetSection("OpenIddict:Applications");
 
-        //Web Client
+        //Web 端
         var webClientId = configurationSection["AbpYes_Web:ClientId"];
         if (!webClientId.IsNullOrWhiteSpace())
         {
@@ -98,7 +104,9 @@ public class OpeniddictDataSeedContributor : IDataSeedContributor, ITransientDep
                 grantTypes: new List<string>
                 {
                     OpenIddictConstants.GrantTypes.AuthorizationCode,
-                    OpenIddictConstants.GrantTypes.Implicit
+                    OpenIddictConstants.GrantTypes.Implicit,
+                    OpenIddictConstants.GrantTypes.Password,
+                    OpenIddictConstants.GrantTypes.RefreshToken
                 },
                 scopes: commonScopes,
                 redirectUri: $"{webClientRootUrl}signin-oidc",

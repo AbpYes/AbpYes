@@ -1,31 +1,42 @@
 ﻿using System;
 using System.Linq;
 using AbpYes.BaseServer;
+using AbpYes.BaseServer.MultiTenancy;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
 using Volo.Abp.Modularity;
+using Volo.Abp.OpenIddict;
 
-namespace AbpYes.AuthServer.Host;
+namespace AbpYes.AuthServer;
 
 [DependsOn(
     typeof(AbpAutofacModule),
     typeof(AbpAspNetCoreSerilogModule),
+    typeof(AbpOpenIddictAspNetCoreModule),
     typeof(AbpYesBaseServerEntityFrameworkCoreModule)
 )]
 public class AbpYesAuthServerHostModule : AbpModule
 {
+    public override void PreConfigureServices(ServiceConfigurationContext context)
+    {
+        PreConfigure<OpenIddictBuilder>(builder =>
+        {
+            builder.AddValidation(options =>
+            {
+                options.AddAudiences("AbpYes");
+                options.UseLocalServer();
+                options.UseAspNetCore();
+            });
+        });
+    }
+
+
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
-        var services = context.Services;
-
-        services.AddControllers();
-        services.AddEndpointsApiExplorer();
-
         ConfigureCors(context);
     }
 
@@ -60,21 +71,22 @@ public class AbpYesAuthServerHostModule : AbpModule
     public override void OnApplicationInitialization(ApplicationInitializationContext context)
     {
         var app = context.GetApplicationBuilder();
-        var env = context.GetEnvironment();
-
-        if (env.IsDevelopment())
-        {
-        }
 
         app.UseCorrelationId();
         app.UseStaticFiles();
         app.UseRouting();
         app.UseCors();
         app.UseAuthentication();
-        // app.UseAbpOpenIddictValidation();
-        app.UseUnitOfWork();
+        app.UseAbpOpenIddictValidation();
+
+        if (MultiTenancyConsts.IsEnabled)
+        {
+            // app.UseMultiTenancy();
+        }
+
+        // app.UseUnitOfWork();
         app.UseAuthorization();
-        app.UseAuditing();
+        // app.UseAuditing();
         app.UseAbpSerilogEnrichers();
         app.UseConfiguredEndpoints();
     }

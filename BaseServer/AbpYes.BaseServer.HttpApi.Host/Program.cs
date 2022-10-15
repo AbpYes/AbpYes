@@ -1,4 +1,7 @@
+using System;
+using System.Linq;
 using AbpYes.BaseServer;
+using AbpYes.BaseServer.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,6 +31,12 @@ try
     await builder.AddApplicationAsync<AbpYesBaseServerHttpApiHostModule>();
     var app = builder.Build();
     await app.InitializeApplicationAsync();
+
+    if (IsMigrationDatabase(args))
+    {
+        await app.Services.GetRequiredService<AbpYesBaseServerDbMigrationService>().MigrateAsync();
+    }
+
     await app.RunAsync();
 }
 catch
@@ -38,4 +47,9 @@ catch
 finally
 {
     Log.CloseAndFlush();
+}
+
+bool IsMigrationDatabase(string[] args)
+{
+    return args.Any(o => o.Contains("--migrate-database", StringComparison.OrdinalIgnoreCase));
 }
