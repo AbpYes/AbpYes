@@ -89,29 +89,28 @@ public class OpeniddictDataSeedContributor : IDataSeedContributor, ITransientDep
 
         var configurationSection = _configuration.GetSection("OpenIddict:Applications");
 
-        //Web 端
-        var webClientId = configurationSection["AbpYes_Web:ClientId"];
-        if (!webClientId.IsNullOrWhiteSpace())
+        //AbpYes_Web Client
+        var consoleAndAngularClientId = configurationSection["AbpYes_Web:ClientId"];
+        if (!consoleAndAngularClientId.IsNullOrWhiteSpace())
         {
-            var webClientRootUrl = configurationSection["AbpYes_Web:RootUrl"].EnsureEndsWith('/');
-
+            var consoleAndAngularClientRootUrl = configurationSection["AbpYes_Web:RootUrl"]?.TrimEnd('/');
             await CreateApplicationAsync(
-                name: webClientId,
-                type: OpenIddictConstants.ClientTypes.Confidential,
+                name: consoleAndAngularClientId,
+                type: OpenIddictConstants.ClientTypes.Public,
                 consentType: OpenIddictConstants.ConsentTypes.Implicit,
-                displayName: "Web Application",
-                secret: configurationSection["AbpYes_Web:ClientSecret"] ?? "1q2w3e*",
+                displayName: "AbpYes_Web Client",
+                secret: null,
                 grantTypes: new List<string>
                 {
                     OpenIddictConstants.GrantTypes.AuthorizationCode,
-                    OpenIddictConstants.GrantTypes.Implicit,
                     OpenIddictConstants.GrantTypes.Password,
+                    OpenIddictConstants.GrantTypes.ClientCredentials,
                     OpenIddictConstants.GrantTypes.RefreshToken
                 },
                 scopes: commonScopes,
-                redirectUri: $"{webClientRootUrl}signin-oidc",
-                clientUri: webClientRootUrl,
-                postLogoutRedirectUri: $"{webClientRootUrl}signout-callback-oidc"
+                redirectUri: consoleAndAngularClientRootUrl,
+                clientUri: consoleAndAngularClientRootUrl,
+                postLogoutRedirectUri: consoleAndAngularClientRootUrl
             );
         }
     }

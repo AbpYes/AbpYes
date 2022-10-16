@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.Autofac;
+using Volo.Abp.Identity.AspNetCore;
 using Volo.Abp.Modularity;
 using Volo.Abp.OpenIddict;
 
@@ -16,6 +17,7 @@ namespace AbpYes.AuthServer;
 [DependsOn(
     typeof(AbpAutofacModule),
     typeof(AbpAspNetCoreSerilogModule),
+    typeof(AbpIdentityAspNetCoreModule),
     typeof(AbpOpenIddictAspNetCoreModule),
     typeof(AbpYesBaseServerEntityFrameworkCoreModule)
 )]
@@ -72,6 +74,8 @@ public class AbpYesAuthServerHostModule : AbpModule
     {
         var app = context.GetApplicationBuilder();
 
+        app.UseAbpRequestLocalization();
+
         app.UseCorrelationId();
         app.UseStaticFiles();
         app.UseRouting();
@@ -81,12 +85,12 @@ public class AbpYesAuthServerHostModule : AbpModule
 
         if (MultiTenancyConsts.IsEnabled)
         {
-            // app.UseMultiTenancy();
+            app.UseMultiTenancy();
         }
 
-        // app.UseUnitOfWork();
+        app.UseUnitOfWork();
         app.UseAuthorization();
-        // app.UseAuditing();
+        app.UseAuditing();
         app.UseAbpSerilogEnrichers();
         app.UseConfiguredEndpoints();
     }
