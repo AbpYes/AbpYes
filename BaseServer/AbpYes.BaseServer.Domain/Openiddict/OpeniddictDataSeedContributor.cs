@@ -90,12 +90,12 @@ public class OpeniddictDataSeedContributor : IDataSeedContributor, ITransientDep
         var configurationSection = _configuration.GetSection("OpenIddict:Applications");
 
         //AbpYes_Web Client
-        var consoleAndAngularClientId = configurationSection["AbpYes_Web:ClientId"];
-        if (!consoleAndAngularClientId.IsNullOrWhiteSpace())
+        var webClientId = configurationSection["AbpYes_Web:ClientId"];
+        if (!webClientId.IsNullOrWhiteSpace())
         {
             var consoleAndAngularClientRootUrl = configurationSection["AbpYes_Web:RootUrl"]?.TrimEnd('/');
             await CreateApplicationAsync(
-                name: consoleAndAngularClientId,
+                name: webClientId,
                 type: OpenIddictConstants.ClientTypes.Public,
                 consentType: OpenIddictConstants.ConsentTypes.Implicit,
                 displayName: "AbpYes_Web Client",

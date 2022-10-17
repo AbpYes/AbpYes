@@ -1,5 +1,10 @@
-﻿namespace AbpYes.BaseServer;
+﻿using Volo.Abp.Modularity;
 
-public class AbpYesBaseServerApplicationContractsModule
+namespace AbpYes.BaseServer;
+
+[DependsOn(
+    typeof(AbpYesBaseServerDomainSharedModule)
+)]
+public class AbpYesBaseServerApplicationContractsModule : AbpModule
 {
 }

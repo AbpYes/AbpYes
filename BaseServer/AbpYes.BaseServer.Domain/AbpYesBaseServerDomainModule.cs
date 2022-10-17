@@ -14,7 +14,8 @@ namespace AbpYes.BaseServer;
     typeof(AbpOpenIddictDomainModule),
     typeof(AbpTenantManagementDomainModule),
     typeof(AbpPermissionManagementDomainOpenIddictModule),
-    typeof(AbpPermissionManagementDomainIdentityModule)
+    typeof(AbpPermissionManagementDomainIdentityModule),
+    typeof(AbpYesBaseServerDomainSharedModule)
 )]
 public class AbpYesBaseServerDomainModule : AbpModule
 {

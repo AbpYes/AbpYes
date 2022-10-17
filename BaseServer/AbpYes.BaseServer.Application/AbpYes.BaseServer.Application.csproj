@@ -11,4 +11,8 @@
         <ProjectReference Include="..\AbpYes.BaseServer.Domain\AbpYes.BaseServer.Domain.csproj"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.Ddd.Application" Version="6.0.0"/>
+    </ItemGroup>
+
 </Project>
